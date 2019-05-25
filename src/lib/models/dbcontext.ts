@@ -2,7 +2,7 @@
  * @Author: 吴占超
  * @Date: 2019-05-24 13:57:10
  * @Last Modified by: 吴占超
- * @Last Modified time: 2019-05-25 12:31:11
+ * @Last Modified time: 2019-05-25 16:35:31
  */
 import { provide, scope, ScopeEnum, config } from 'midway';
 import { Sequelize } from 'sequelize-typescript';
@@ -20,15 +20,15 @@ interface ISequelizeConfig {
 @scope(ScopeEnum.Singleton)
 @provide('DBContext')
 export class DBContext {
-  static sequelize: Sequelize;
+  sequelize: Sequelize;
 
   /**
    * Creates an instance of DBContext.
    * @param {ISequelizeConfig} config
    * @memberof DBContext
    */
-  static initDB(@config('sequelize') config: ISequelizeConfig) {
-    DBContext.sequelize = new Sequelize({
+  constructor(@config('sequelize') config: ISequelizeConfig) {
+    this.sequelize = new Sequelize({
       dialect: 'mysql',
       host: config.host,
       timezone: config.timezone,
@@ -48,10 +48,11 @@ export class DBContext {
       define: {
         timestamps: true,
         paranoid: true,
-        charset: 'utf8'
+        charset: 'utf8',
+        underscored: true
       }
     });
-    DBContext.sequelize
+    return this.sequelize
       .authenticate()
       .then(result => {
         console.log('DataBase Connection successfully!');

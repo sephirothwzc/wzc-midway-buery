@@ -2,7 +2,7 @@
  * @Author: 吴占超
  * @Date: 2019-05-24 14:57:02
  * @Last Modified by: 吴占超
- * @Last Modified time: 2019-05-25 12:39:58
+ * @Last Modified time: 2019-05-25 16:35:18
  */
 import { providerWrapper } from 'midway';
 import {
@@ -28,10 +28,7 @@ providerWrapper([
 export type IWxSettingsModel = typeof WxSettingsModel;
 
 @Table({
-  tableName: 'wx_settings',
-  underscored: true,
-  paranoid: true,
-  timestamps: true
+  tableName: 'wx_settings'
 })
 export class WxSettingsModel extends Model<WxSettingsModel> {
   @Column({
