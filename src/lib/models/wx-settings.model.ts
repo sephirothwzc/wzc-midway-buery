@@ -2,18 +2,18 @@
  * @Author: 吴占超
  * @Date: 2019-05-24 14:57:02
  * @Last Modified by: 吴占超
- * @Last Modified time: 2019-05-25 16:35:18
+ * @Last Modified time: 2019-05-25 16:51:49
  */
 import { providerWrapper } from 'midway';
 import {
   Table,
   Column,
-  Model,
   CreatedAt,
   UpdatedAt,
   DeletedAt,
   DataType
 } from 'sequelize-typescript';
+import { BaseModel } from '../../base/base.model';
 const { BIGINT } = DataType;
 
 // @provide 用 工厂模式static model
@@ -30,7 +30,7 @@ export type IWxSettingsModel = typeof WxSettingsModel;
 @Table({
   tableName: 'wx_settings'
 })
-export class WxSettingsModel extends Model<WxSettingsModel> {
+export class WxSettingsModel extends BaseModel {
   @Column({
     type: BIGINT,
     primaryKey: true,
