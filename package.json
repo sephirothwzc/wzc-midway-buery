@@ -4,8 +4,12 @@
   "description": "微信统一管理后台",
   "private": true,
   "dependencies": {
+    "egg-scripts": "^2.10.0",
     "midway": "^1.0.0",
-    "egg-scripts": "^2.10.0"
+    "mysql2": "^1.6.5",
+    "reflect-metadata": "^0.1.13",
+    "sequelize": "^5.8.6",
+    "sequelize-typescript": "^1.0.0-beta.3"
   },
   "devDependencies": {
     "@types/mocha": "^5.2.5",
@@ -13,10 +17,10 @@
     "egg-ci": "^1.8.0",
     "midway-bin": "1",
     "midway-mock": "1",
-    "tslib": "^1.8.1",
-    "tslint-midway-contrib": "1",
     "ts-node": "^8.0.2",
-    "tslint": "^5.11.0",
+    "tslib": "^1.8.1",
+    "tslint": "^5.16.0",
+    "tslint-midway-contrib": "1",
     "typescript": "^3.2.0"
   },
   "engines": {

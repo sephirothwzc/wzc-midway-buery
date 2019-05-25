@@ -6,7 +6,17 @@ export const development = {
     'config',
     'app.ts',
     'agent.ts',
-    'interface.ts',
+    'interface.ts'
   ],
   overrideDefault: true,
+  // sequelize
+  sequelize: {
+    dialect: 'mysql',
+    host: '152.136.16.132',
+    port: '6606',
+    database: 'member_card_dev',
+    username: 'root',
+    password: 'Admin@123',
+    timezone: '+08:00'
+  }
 };
