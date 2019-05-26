@@ -12,11 +12,11 @@ export const development = {
   // sequelize
   sequelize: {
     dialect: 'mysql',
-    host: '152.136.16.132',
-    port: '6606',
-    database: 'member_card_dev',
+    host: '39.106.49.196',
+    port: '4406',
+    database: 'sephiroth_base',
     username: 'root',
-    password: 'Admin@123',
+    password: 'Admin@123!9999',
     timezone: '+08:00'
   }
 };

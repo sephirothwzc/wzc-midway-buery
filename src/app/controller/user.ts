@@ -1,16 +1,20 @@
-import { controller, get, inject, provide } from 'midway';
-import { IUserService, IUserResult } from '../../interface';
+/*
+ * @Author: 吴占超
+ * @Date: 2019-05-25 10:38:27
+ * @Last Modified by: 吴占超
+ * @Last Modified time: 2019-05-26 15:58:20
+ */
+import { provide, controller, Context, get, inject } from 'midway';
+import { IUserService } from '../../lib/services/user';
 
 @provide()
 @controller('/user')
-export class UserController {
-  @inject('userService')
-  service: IUserService;
+export class TUserController {
+  @inject()
+  private userService: IUserService;
 
-  @get('/:id')
-  async getUser(ctx): Promise<void> {
-    const id: number = ctx.params.id;
-    const user: IUserResult = await this.service.getUser({ id });
-    ctx.body = { success: true, message: 'OK', data: user };
+  @get('/')
+  async index(ctx: Context) {
+    ctx.body = await this.userService.find();
   }
 }

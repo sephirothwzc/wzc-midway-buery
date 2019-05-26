@@ -2,7 +2,7 @@
  * @Author: 吴占超
  * @Date: 2019-05-25 16:44:52
  * @Last Modified by: 吴占超
- * @Last Modified time: 2019-05-25 16:51:19
+ * @Last Modified time: 2019-05-26 17:08:18
  */
 import {
   Table,
@@ -13,14 +13,19 @@ import {
   DeletedAt,
   DataType
 } from 'sequelize-typescript';
+// import 'flake-idgen';
+import FlakeId = require('flake-idgen');
+import intformat = require('biguint-format');
 const { BIGINT } = DataType;
+const flakeIdgen = new FlakeId({ epoch: 1300000000000 });
 
 @Table
 export class BaseModel extends Model<BaseModel> {
   @Column({
     type: BIGINT,
     primaryKey: true,
-    autoIncrement: false
+    autoIncrement: false,
+    defaultValue: () => intformat(flakeIdgen.next(), 'dec')
   })
   id: string;
 

@@ -1,14 +1,21 @@
-import { provide } from 'midway';
-import { IUserService, IUserOptions, IUserResult } from '../../interface';
+import { BaseService } from '../../base/base.service';
+import { IUserModel } from '../models/user.model';
+import { inject, provide } from 'midway';
 
-@provide('userService')
-export class UserService implements IUserService {
-  async getUser(options: IUserOptions): Promise<IUserResult> {
-    return {
-      id: options.id,
-      username: 'mockedName',
-      phone: '12345678901',
-      email: 'xxx.xxx@xxx.com'
-    };
+export interface IUserService extends UserService {}
+
+/*
+ * @Author: 吴占超
+ * @Date: 2019-05-26 15:25:06
+ * @Last Modified by: 吴占超
+ * @Last Modified time: 2019-05-26 17:10:52
+ */
+@provide()
+export class UserService extends BaseService {
+  @inject()
+  private UserModel: IUserModel;
+
+  async find() {
+    return this.UserModel.findAll();
   }
 }

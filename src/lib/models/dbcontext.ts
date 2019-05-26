@@ -2,7 +2,7 @@
  * @Author: 吴占超
  * @Date: 2019-05-24 13:57:10
  * @Last Modified by: 吴占超
- * @Last Modified time: 2019-05-25 16:35:31
+ * @Last Modified time: 2019-05-26 15:50:37
  */
 import { provide, scope, ScopeEnum, config } from 'midway';
 import { Sequelize } from 'sequelize-typescript';
@@ -39,6 +39,7 @@ export class DBContext {
       storage: ':memory:',
       modelPaths: [__dirname + '/*.model.ts'],
       modelMatch: (filename, member) => {
+        console.log(filename);
         return (
           filename.substring(0, filename.indexOf('.model')).replace('-', '') +
             'model' ===
